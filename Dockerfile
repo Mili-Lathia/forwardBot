@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+EXPOSE 8080
 
 
 # Specify the command to run when the container starts
