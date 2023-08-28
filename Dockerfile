@@ -6,20 +6,13 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy the requirements file into the container at /app
-COPY requirements.txt /app/
+#COPY requirements.txt /app/
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+#RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code into the container at /app
 COPY . /app/
-
-EXPOSE 80
-
-# Add a healthcheck to verify if the container is healthy or not
-HEALTHCHECK --interval=5s \
-            --timeout=3s \
-            CMD curl -f http://localhost:80 || exit 1
 
 # Specify the command to run when the container starts
 CMD ["python", "forwardBot.py"]
