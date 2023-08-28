@@ -20,3 +20,8 @@ EXPOSE 8080
 
 # Specify the command to run when the container starts
 CMD ["python", "forwardBot.py"]
+
+
+# Command to run on server
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+
