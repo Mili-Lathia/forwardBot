@@ -16,6 +16,10 @@ COPY . /app/
 
 EXPOSE 80
 
+# Add a healthcheck to verify if the container is healthy or not
+HEALTHCHECK --interval=5s \
+            --timeout=3s \
+            CMD curl -f http://localhost:80 || exit 1
 
 # Specify the command to run when the container starts
 CMD ["python", "forwardBot.py"]
