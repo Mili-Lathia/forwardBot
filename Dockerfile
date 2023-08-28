@@ -14,5 +14,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application code into the container at /app
 COPY . /app/
 
+EXPOSE 5000/tcp
+
+
 # Specify the command to run when the container starts
 CMD ["python", "forwardBot.py"]
