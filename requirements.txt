@@ -30,3 +30,5 @@ Telethon==1.29.3
 tornado==6.3.3
 urllib3==2.0.4
 yarl==1.9.2
+Flask==2.1.1
+gunicorn==20.1.0
