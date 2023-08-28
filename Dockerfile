@@ -1,27 +1,18 @@
+# Base Image
+FROM python:3.9-slim
 
-# Use an official Python runtime as the base image
-FROM python:3.10-slim
-
-# Set the working directory in the container
+# Work directory
 WORKDIR /app
 
-# Copy the requirements file into the container at /app
-COPY requirements.txt /app/
+# Copy requirements and install dependencies
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy other project files
+COPY . .
 
-# Copy the rest of the application code into the container at /app
-COPY . /app/
-
-# Make port 80 available to the world outside this container
+# Expose a port to Containers 
 EXPOSE 8080
-
-
-# Specify the command to run when the container starts
-CMD ["python", "forwardBot.py"]
-
 
 # Command to run on server
 CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
-
