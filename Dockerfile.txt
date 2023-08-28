@@ -1,26 +1,5 @@
-# syntax=docker/dockerfile:1.4
-FROM --platform=$BUILDPLATFORM python:3.10-alpine
-
-# Set the working directory inside the container
+FROM python:3.10
 WORKDIR /app
-
-# Copy the application code into the container
-COPY forwardBot.py /app/
-
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# install the requirements
-COPY requirements.txt /app
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install -r requirements.txt
-
-# Set the command to run when the container starts
+COPY . /app
+RUN pip install -r requirements.txt
 CMD ["python", "forwardBot.py"]
-
-
-
-
-
-
